@@ -1,10 +1,10 @@
+import css from "./Footer.module.css";
+
 function Footer() {
   return (
-    <footer>
-      <br />
-      <br />
-      <p>
-        Created <time dateTime="2025">2025</time>
+    <footer className={css.footer}>
+      <p className={css.text}>
+        Created <time dateTime={new Date().getFullYear().toString()}>{new Date().getFullYear().toString()}</time>
       </p>
     </footer>
   );

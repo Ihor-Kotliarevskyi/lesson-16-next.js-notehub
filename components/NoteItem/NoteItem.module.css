@@ -1,32 +1,76 @@
-.app {
-  width: 90%;
-  max-width: 1280px;
-  margin: 0px auto;
-  padding: 0 16px 16px;
-  flex: 1;
+/* NoteItem Styles */
+.noteItem {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(102, 126, 234, 0.1);
 }
 
-.toolbar {
-  margin-bottom: 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 0;
-  background-color: #f8f9fa;
-  border-bottom: 1px solid #dee2e6;
+.noteItem::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.button {
-  padding: 6px 12px;
-  font-size: 16px;
-  color: #fff;
-  background-color: #0d6efd;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
+.noteItem:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.2);
+  border-color: rgba(102, 126, 234, 0.3);
 }
 
-.button:hover {
-  background-color: #0b5ed7;
+.noteItem:hover::before {
+  transform: scaleX(1);
+}
+
+.noteLink {
+  display: block;
+  padding: 1.5rem;
+  color: #2d3748;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.noteLink:hover {
+  color: #667eea;
+}
+
+.noteLink::after {
+  content: '→';
+  position: absolute;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%) translateX(-4px);
+  opacity: 0;
+  transition: all 0.3s ease;
+  color: #667eea;
+  font-size: 1.2rem;
+}
+
+.noteItem:hover .noteLink::after {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+/* Alternative compact style */
+.noteItem.compact {
+  border-radius: 8px;
+}
+
+.noteItem.compact .noteLink {
+  padding: 1rem 1.25rem;
+  font-size: 1rem;
 }

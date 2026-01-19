@@ -1,21 +1,31 @@
-import { getCategories } from "@/lib/api";
-import Link from "next/link";
+import Link from 'next/link';
+import { getCategories } from '@/lib/api';
+import css from './NotesSidebar.module.css';
 
-async function NotesSidebar() {
+const NotesSidebar = async () => {
   const categories = await getCategories();
 
   return (
-    <ul>
-      <li>
-        <Link href={`/notes/filter/all`}>All notes</Link>
-      </li>
-      {categories.map((category) => (
-        <li key={category.id}>
-          <Link href={`/notes/filter/${category.id}`}>{category.name}</Link>
+    <aside className={css.sidebar}>
+      <Link href="/notes/action/create" className={css.createButton}>
+        + Create Note
+      </Link>
+      <ul className={css.categoryList}>
+        <li className={css.categoryItem}>
+          <Link href={`/notes/filter/all`} className={css.categoryLink}>
+            All notes
+          </Link>
         </li>
-      ))}
-    </ul>
+        {categories.map((category) => (
+          <li key={category.id} className={css.categoryItem}>
+            <Link href={`/notes/filter/${category.id}`} className={css.categoryLink}>
+              {category.name}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </aside>
   );
-}
+};
 
 export default NotesSidebar;

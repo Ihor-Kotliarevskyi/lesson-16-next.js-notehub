@@ -1,5 +1,6 @@
 import { Note } from "@/lib/api";
 import NoteItem from "../NoteItem/NoteItem";
+import css from "./NotesList.module.css";
 
 type Props = {
   notes: Note[];
@@ -7,7 +8,7 @@ type Props = {
 
 const NoteList = ({ notes }: Props) => {
   return (
-    <ul>
+    <ul className={css.noteList}>
       {notes.map((note) => (
         <NoteItem key={note.id} item={note} />
       ))}
