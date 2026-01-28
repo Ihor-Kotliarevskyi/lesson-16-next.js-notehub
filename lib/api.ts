@@ -29,11 +29,10 @@ export type NewNoteData = {
   categoryId: string;
 };
 
-
-axios.defaults.baseURL = "https://next-v1-notes-api.goit.study";
+axios.defaults.baseURL = "http://localhost:3000/api";
 
 export const getNotes = async (categoryId?: string) => {
-  const res = await axios.get<NoteListResponse>('/notes', {
+  const res = await axios.get<NoteListResponse>("/notes", {
     params: { categoryId },
   });
   return res.data;
@@ -45,11 +44,11 @@ export const getSingleNote = async (id: string) => {
 };
 
 export const getCategories = async () => {
-  const res = await axios<Category[]>('/categories');
+  const res = await axios<Category[]>("/categories");
   return res.data;
 };
 
 export const createNote = async (data: NewNoteData) => {
-  const res = await axios.post<Note>('/notes', data);
+  const res = await axios.post<Note>("/notes", data);
   return res.data;
 };
