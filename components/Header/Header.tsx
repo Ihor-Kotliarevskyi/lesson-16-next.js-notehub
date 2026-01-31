@@ -1,5 +1,6 @@
 import Link from "next/link";
 import css from "./Header.module.css";
+import AuthNavigation from "../AuthNavigation/AuthNavigation";
 
 function Header() {
   return (
@@ -21,12 +22,7 @@ function Header() {
           <li>
             <Link href="/about">About</Link>
           </li>
-          <li>
-            <Link href="/sign-in">Login</Link>
-          </li>
-          <li>
-            <Link href="/sign-up">Register</Link>
-          </li>
+          <AuthNavigation />
         </ul>
       </nav>
     </header>

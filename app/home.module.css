@@ -1,4 +1,3 @@
-/* Home Page Styles */
 .hero {
   min-height: calc(100vh - 200px);
   display: flex;
@@ -9,24 +8,24 @@
   overflow: hidden;
 }
 
-/* Animated background gradient */
 .hero::before {
-  content: '';
+  content: "";
   position: absolute;
   top: -50%;
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(
-    circle at 30% 50%,
-    rgba(102, 126, 234, 0.1) 0%,
-    transparent 50%
-  ),
-  radial-gradient(
-    circle at 70% 50%,
-    rgba(118, 75, 162, 0.1) 0%,
-    transparent 50%
-  );
+  background:
+    radial-gradient(
+      circle at 30% 50%,
+      rgba(102, 126, 234, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 70% 50%,
+      rgba(118, 75, 162, 0.1) 0%,
+      transparent 50%
+    );
   animation: rotate 20s linear infinite;
   z-index: -1;
 }
@@ -73,7 +72,7 @@
 }
 
 .title::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -1rem;
   left: 50%;
@@ -86,7 +85,8 @@
 }
 
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
     width: 120px;
   }
@@ -135,7 +135,7 @@
 }
 
 .ctaPrimary::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: -100%;
@@ -214,20 +214,20 @@
   .title {
     font-size: 2rem;
   }
-  
+
   .subtitle {
     font-size: 1.1rem;
   }
-  
+
   .ctaGroup {
     flex-direction: column;
     align-items: stretch;
   }
-  
+
   .ctaButton {
     justify-content: center;
   }
-  
+
   .features {
     grid-template-columns: 1fr;
   }

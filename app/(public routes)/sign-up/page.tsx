@@ -7,6 +7,7 @@ import { useState } from "react";
 
 import css from "./sign-up.module.css";
 import { useUserDraftStore } from "@/lib/stores/userStore";
+import { useAuthStore } from "@/lib/stores/authStore";
 
 function SignUp() {
   const router = useRouter();
@@ -24,11 +25,14 @@ function SignUp() {
     });
   };
 
+  const setUser = useAuthStore((state) => state.setUser);
+
   const handleSubmit = async (formData: FormData) => {
     try {
       const formValues = Object.fromEntries(formData) as RegisterRequest;
       const res = await register(formValues);
       if (res) {
+        setUser(res);
         router.push("/profile");
         clearDraft();
       } else {

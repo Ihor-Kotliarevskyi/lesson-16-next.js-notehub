@@ -1,4 +1,3 @@
-/* Header Styles */
 .header {
   position: sticky;
   top: 0;
@@ -52,7 +51,7 @@
 }
 
 .navigation a::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;

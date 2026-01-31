@@ -7,6 +7,7 @@ import { useState } from "react";
 
 import css from "./sign-in.module.css";
 import { useUserDraftStore } from "@/lib/stores/userStore";
+import { useAuthStore } from "@/lib/stores/authStore";
 
 function SignIn() {
   const router = useRouter();
@@ -24,11 +25,14 @@ function SignIn() {
     });
   };
 
+  const setUser = useAuthStore((state) => state.setUser);
+
   const handleSubmit = async (formData: FormData) => {
     try {
       const formValues = Object.fromEntries(formData) as LoginRequest;
       const res = await login(formValues);
       if (res) {
+        setUser(res);
         router.push("/profile");
         clearDraft();
       } else {
@@ -45,7 +49,7 @@ function SignIn() {
 
   return (
     <form action={handleSubmit} className={css.form}>
-      <h1>Sign up</h1>
+      <h1>Sign in</h1>
       <div className={css.buttonGroup}>
         <label className={css.label}>
           Email
