@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
 type Props = {
   error: Error;
   reset: () => void;
 };
 
-const Error = ({ error, reset }: Props) => {
+const ErrorPage = ({ error, reset }: Props) => {
   return (
     <div>
       <h2>Помилка при завантаженні</h2>
@@ -13,6 +13,6 @@ const Error = ({ error, reset }: Props) => {
       <button onClick={reset}>Спробувати знову</button>
     </div>
   );
-}
+};
 
-export default Error;
+export default ErrorPage;
