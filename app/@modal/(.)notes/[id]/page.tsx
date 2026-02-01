@@ -1,7 +1,11 @@
-import NoteDetailsClient from '@/app/(public routes)/notes/[id]/NoteDetails.client';
-import Modal from '@/components/Modal/Modal';
-import { getSingleNote } from '@/lib/api';
-import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
+import NoteDetailsClient from "@/app/(private routes)/notes/[id]/NoteDetails.client";
+import Modal from "@/components/Modal/Modal";
+import { getSingleNote } from "@/lib/api/clientApi";
+import {
+  dehydrate,
+  HydrationBoundary,
+  QueryClient,
+} from "@tanstack/react-query";
 
 type Props = {
   readonly params: Promise<{ id: string }>;
@@ -9,7 +13,7 @@ type Props = {
 
 async function NotePreview({ params }: Props) {
   const { id } = await params;
-const queryClient = new QueryClient();
+  const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery({
     queryKey: ["note", id],
@@ -17,9 +21,11 @@ const queryClient = new QueryClient();
   });
   return (
     <Modal>
-      <HydrationBoundary state={dehydrate(queryClient)}><NoteDetailsClient /></HydrationBoundary>
+      <HydrationBoundary state={dehydrate(queryClient)}>
+        <NoteDetailsClient />
+      </HydrationBoundary>
     </Modal>
   );
-};
+}
 
 export default NotePreview;

@@ -1,29 +1,16 @@
 "use client";
 
 import { ApiError } from "@/app/api/api";
-import { register, RegisterRequest } from "@/lib/api";
+import { register, RegisterRequest } from "@/lib/api/clientApi";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 import css from "./sign-up.module.css";
-import { useUserDraftStore } from "@/lib/stores/userStore";
 import { useAuthStore } from "@/lib/stores/authStore";
 
 function SignUp() {
   const router = useRouter();
   const [error, setError] = useState("");
-  const { draft, setDraft, clearDraft } = useUserDraftStore();
-
-  const handleChange = (
-    event: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >,
-  ) => {
-    setDraft({
-      ...draft,
-      [event.target.name]: event.target.value,
-    });
-  };
 
   const setUser = useAuthStore((state) => state.setUser);
 
@@ -34,7 +21,6 @@ function SignUp() {
       if (res) {
         setUser(res);
         router.push("/profile");
-        clearDraft();
       } else {
         setError("Invalid email or password");
       }
@@ -54,9 +40,7 @@ function SignUp() {
         <label className={css.label}>
           Username
           <input
-            defaultValue={draft?.userName}
             className={css.input}
-            onChange={handleChange}
             type="text"
             name="userName"
             placeholder="Enter your name..."
@@ -68,9 +52,7 @@ function SignUp() {
         <label className={css.label}>
           Email
           <input
-            defaultValue={draft?.email}
             className={css.input}
-            onChange={handleChange}
             type="email"
             name="email"
             placeholder="Enter your email..."

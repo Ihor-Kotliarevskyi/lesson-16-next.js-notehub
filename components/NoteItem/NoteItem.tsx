@@ -1,4 +1,4 @@
-import { Note } from "@/lib/api";
+import { Note } from "@/lib/api/api";
 import Link from "next/link";
 import css from "./NoteItem.module.css";
 
@@ -14,6 +14,6 @@ const NoteItem = ({ item }: Props) => {
       </Link>
     </li>
   );
-}
+};
 
 export default NoteItem;

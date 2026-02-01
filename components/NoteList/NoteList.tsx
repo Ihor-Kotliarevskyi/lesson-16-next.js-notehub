@@ -1,4 +1,4 @@
-import { Note } from "@/lib/api";
+import { Note } from "@/lib/api/api";
 import NoteItem from "../NoteItem/NoteItem";
 import css from "./NotesList.module.css";
 
@@ -14,6 +14,6 @@ const NoteList = ({ notes }: Props) => {
       ))}
     </ul>
   );
-}
+};
 
 export default NoteList;

@@ -1,6 +1,6 @@
-import Link from 'next/link';
-import { getCategories } from '@/lib/api';
-import css from './NotesSidebar.module.css';
+import Link from "next/link";
+import { getCategories } from "@/lib/api/clientApi";
+import css from "./NotesSidebar.module.css";
 
 const NotesSidebar = async () => {
   const categories = await getCategories();
@@ -18,7 +18,10 @@ const NotesSidebar = async () => {
         </li>
         {categories.map((category) => (
           <li key={category.id} className={css.categoryItem}>
-            <Link href={`/notes/filter/${category.id}`} className={css.categoryLink}>
+            <Link
+              href={`/notes/filter/${category.id}`}
+              className={css.categoryLink}
+            >
               {category.name}
             </Link>
           </li>
